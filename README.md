@@ -25,7 +25,7 @@
 
 1. Клонируйте репозиторий:
     ```bash
-    git clone https://github.com/.git
+    git clone https://github.com/brosskadev/go_tg_scheduler
     ```
 
 2. Установите зависимости:
