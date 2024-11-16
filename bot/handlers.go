@@ -169,9 +169,18 @@ func SaveToJSON(data map[int64]userSelect, filePath string) error {
 }
 
 func LoadFromJSON(filePath string) (map[int64]userSelect, error) {
+
+	if _, err := os.Stat(filePath); os.IsNotExist(err) {
+		return make(map[int64]userSelect), nil
+	}
+	
 	fileData, err := os.ReadFile(filePath)
 	if err != nil {
 		return nil, fmt.Errorf("ошибка при чтении файла: %w", err)
+	}
+
+	if len(fileData) == 0 {
+		return make(map[int64]userSelect), nil
 	}
 
 	var data map[int64]userSelect
